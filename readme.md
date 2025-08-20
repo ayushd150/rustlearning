@@ -18,4 +18,4 @@ rust way
 
 2) stack vs heap
 
-3) ownership - set of rules that govern how rust manage memory
+3)  ownership - set of rules that govern how rust manage memory

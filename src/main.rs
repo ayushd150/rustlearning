@@ -20,8 +20,18 @@
 //     }
 // }
 
+// fn main(){
+//     let mut x: String = String::from("hi there");
+//     x=2;
+//     println!("{}", x)
+// }
+
 fn main(){
-    let mut x: String = String::from("hi there");
-    x=2;
-    println!("{}", x)
+    let my_string: String = String::from("helllo");
+    takes_ownership(some_string: my_string);
+    println!("{}", my_string); //this line causes compilTION ERRor as ownership has been removed
+}
+
+fn takes_ownership(some_string: String){
+    println!("{}", some_string); //'some_string now owns the data
 }
