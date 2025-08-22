@@ -57,16 +57,41 @@
 //     }
 // }
 
-use std::fs::read_to_string
+// use std::fs::read_to_string  //import from seperate library
 
-fn main(){
-    let greeting_file_result = fs::read_to_string("hello.txt");
-    match greeting_file_result{
-        Ok(file_content)=>{
-            println!("file read successfully: {:?}", file_content);
-        },
-        Err(error)=>{
-            println!("Failed to read file: {:?}", error); 
-        }
-    }
-}
+// fn main(){
+//     let greeting_file_result = fs::read_to_string("hello.txt");
+//     match greeting_file_result{
+//         Ok(file_content)=>{
+//             println!("file read successfully: {:?}", file_content);
+//         },
+//         Err(error)=>{
+//             println!("Failed to read file: {:?}", error); 
+//         }
+//     }
+// }
+
+// fn main(){
+//     let index = find_first_a(String::from("lovely")); //double quotes - string literal, single quotes - char literal
+//     if index==-1{
+//         println!("a is not found")
+//     }
+//     else{
+//         println!("index is {}", index);
+//     }
+// }
+
+// fn find_first_a (s: String) -> Option<i32>{
+//     for (index,char) in s.chars().enumerate(){
+//         if char=='a'{
+//             return Some(index as i32);
+//         }
+//     }
+
+//     return None;
+// } //option means either some value or none
+
+// why strings stored on heap :-
+// they are large and their size can change at runtime, size of stack frame needs to be fixed
+
+// rust memory management - own ownership model for memory management, safe for memory errors
