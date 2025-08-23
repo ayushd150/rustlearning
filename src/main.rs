@@ -95,3 +95,54 @@
 // they are large and their size can change at runtime, size of stack frame needs to be fixed
 
 // rust memory management - own ownership model for memory management, safe for memory errors
+
+//23/08
+//vectors
+fn main(){
+    let mut vec = Vec::new();
+    vec.push(1);
+    vec.push(2);
+    println!("{}", vec); //[1,2]
+}
+
+fn even_filter(vec:Vec<i32>) -> Vec<i32> {
+    let mut new_vec = Vec::new();
+    for val in vec{
+        if val % 2==0{
+            new_vec.push(val);
+        }
+    }
+    return new_vec
+}
+
+// fn main(){
+//     let numbers = vec![1,2,3]
+// }
+//initialising by macro
+
+//hashmaps- stores key value pair
+
+use std::{collection::HashMap, collections::HashMap};
+
+fn group_values_by_keys(vec:Vec<(String, i32)>) -> HashMap<String, i32>{
+    let mut hm = HashMap::new();
+    for (key, value) in vec{
+        hm.insert(key, value);
+    }
+    return hm;
+}
+
+
+fn main(){
+    let input_vec = vec![(String::from("ayush"), 22), (String::from("harish"), 23)];
+    let hm = group_values_by_keys(input_vec);
+    println!("{:?}", hm)
+}
+
+fn main(){
+    let nums = vec![1,2,3]
+    let iter = nums.iter()
+    for value in iter{
+        println!("{}", value)
+    }
+}
