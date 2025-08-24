@@ -41,3 +41,14 @@ Mutable by default: You can freely add, remove, or change properties at runtime.
 
 Loose structure: Any property can be added on the fly.
 
+Strings vs slices
+Strings(mutable) - growable, heap-allocated, owned string type, comes from standard ibrary, size not fixed at compile time
+
+Slices - immutable refrence to portion of string
+Key traits of &str:
+
+Borrowed view (no ownership).
+
+Immutable (cannot change content).
+
+Fixed size at compile-time (just a pointer + length).

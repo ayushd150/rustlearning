@@ -148,15 +148,15 @@
 // }
 
 
-fn main(){
-    let mut v1 = vec![1,2,3]
-    let v1_iter = v1.iter_mut();
-    for val in v1_iter{
-        *val=*val+1 //*val means derefrence */
-    }
-    println!("{:?}", v1) //You’ll get an error because a vector (Vec<i32>) does not implement Display (the trait behind {}). To fix this, Rust provides another placeholder: {:?}
+// fn main(){
+//     let mut v1 = vec![1,2,3]
+//     let v1_iter = v1.iter_mut();
+//     for val in v1_iter{
+//         *val=*val+1 //*val means derefrence */
+//     }
+//     println!("{:?}", v1) //You’ll get an error because a vector (Vec<i32>) does not implement Display (the trait behind {}). To fix this, Rust provides another placeholder: {:?}
 // It uses the Debug trait, which is meant for debugging / developer output.
-}
+// }
 
 //intolter - convert collection to iterator takes ownership of collection
 //iter - if u want immutrable ref to inner var adnd dont want to transfer ownership
@@ -170,13 +170,73 @@ fn main(){
 // Importantly: adaptors are lazy → they don’t actually do any work until you call a “consumer” method (like collect, sum, for, etc.).
 
 
+// fn main() {
+//     let nums = vec![1, 2, 3, 4, 5, 6];
+
+//     let result: Vec<i32> = nums.iter()
+//                                .filter(|x| *x % 2 == 1) // keep only odd numbers
+//                                .map(|x| x * 2)          // double each
+//                                .collect();              // turn into new Vec
+
+//     println!("{:?}", result); // [2, 6, 10]
+// }
+
+
+// fn main() {
+//     let mut s = String::from("Hello"); // owns heap memory
+//     s.push_str(", world!");            // can be mutated
+//     println!("{}", s);                 // "Hello, world!"
+// }
+
+
+// fn main(){
+//     let word = String::from("hello world");
+//     let word2 = &word[0..5];
+// //u can have multiple immutable references
+// //if u have mutable reference, u cannot have other muttable/immutable references
+
+//     word2.clear();
+//     println!("{}", word2);
+// }
+
 fn main() {
-    let nums = vec![1, 2, 3, 4, 5, 6];
-
-    let result: Vec<i32> = nums.iter()
-                               .filter(|x| *x % 2 == 1) // keep only odd numbers
-                               .map(|x| x * 2)          // double each
-                               .collect();              // turn into new Vec
-
-    println!("{:?}", result); // [2, 6, 10]
+    let mut word = String::from("Hello world");
+    let word2 = find_first_word(word); //Calls find_first_word, moving ownership of word into the function because the parameter type is String (owned). After this line, word in main is no longer usable.
+    println!("{}", word);
 }
+
+fn find_first_word(word: String) -> &str {
+    let mut index = 0;
+    for (_, i) in word.chars().enumerate() {
+        if i == ' ' {
+            break;
+        }
+        index = index + 1;
+    }
+    return &word[0..index];
+}
+
+
+fn main(){
+    let name = String::from("hello world");
+    let mut space_index = 0;
+    for i in name.chars(){
+        if i == ' '{
+            break;
+        }
+        space_index+=1
+    }
+    let ans = &name[0..space_index];
+    println!("Ans is {}", ans);
+
+}
+
+//use of &name
+// name[0..space_index] produces a string slice (&str).
+
+// A slice is not a new string. It’s just a view (pointer + length) into the existing string’s data.
+
+// So ans is a &str that borrows from name.
+// Rust would try to move ownership of part of the string out of name.
+// But that’s not possible — you can’t partially move out of a String.
+// Instead, you borrow (&) to create a reference to a part of it.
