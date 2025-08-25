@@ -52,3 +52,21 @@ Borrowed view (no ownership).
 Immutable (cannot change content).
 
 Fixed size at compile-time (just a pointer + length).
+
+generics in rust
+Generics allow you to write code once and use it with many different types without duplicating logic.
+They’re like "type parameters" you can plug different types into.
+
+Traits
+defines functionality of particular type that can be shared with other types. define shared behaviour in abstract way. similar to interfaces 
+A trait defines a collection of methods (and sometimes associated items) that a type can implement.
+
+Lifetimes
+A lifetime is Rust’s way of describing how long a reference is valid.
+
+It ensures that references never outlive the data they point to → preventing dangling references.
+
+Unlike garbage-collected languages (like Java/Python), Rust checks lifetimes at compile time.
+
+generic ;ifetime annotation
+'a

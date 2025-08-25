@@ -199,37 +199,37 @@
 //     println!("{}", word2);
 // }
 
-fn main() {
-    let mut word = String::from("Hello world");
-    let word2 = find_first_word(word); //Calls find_first_word, moving ownership of word into the function because the parameter type is String (owned). After this line, word in main is no longer usable.
-    println!("{}", word);
-}
+// fn main() {
+//     let mut word = String::from("Hello world");
+//     let word2 = find_first_word(word); //Calls find_first_word, moving ownership of word into the function because the parameter type is String (owned). After this line, word in main is no longer usable.
+//     println!("{}", word);
+// }
 
-fn find_first_word(word: String) -> &str {
-    let mut index = 0;
-    for (_, i) in word.chars().enumerate() {
-        if i == ' ' {
-            break;
-        }
-        index = index + 1;
-    }
-    return &word[0..index];
-}
+// fn find_first_word(word: String) -> &str {
+//     let mut index = 0;
+//     for (_, i) in word.chars().enumerate() {
+//         if i == ' ' {
+//             break;
+//         }
+//         index = index + 1;
+//     }
+//     return &word[0..index];
+// }
 
 
-fn main(){
-    let name = String::from("hello world");
-    let mut space_index = 0;
-    for i in name.chars(){
-        if i == ' '{
-            break;
-        }
-        space_index+=1
-    }
-    let ans = &name[0..space_index];
-    println!("Ans is {}", ans);
+// fn main(){
+//     let name = String::from("hello world");
+//     let mut space_index = 0;
+//     for i in name.chars(){
+//         if i == ' '{
+//             break;
+//         }
+//         space_index+=1
+//     }
+//     let ans = &name[0..space_index];
+//     println!("Ans is {}", ans);
 
-}
+// }
 
 //use of &name
 // name[0..space_index] produces a string slice (&str).
@@ -240,3 +240,39 @@ fn main(){
 // Rust would try to move ownership of part of the string out of name.
 // But that’s not possible — you can’t partially move out of a String.
 // Instead, you borrow (&) to create a reference to a part of it.
+
+//25/08
+//fn identity<T>(x: T) -> T {
+//     x
+// }
+// T is a generic type parameter.
+
+// identity works with any type: integers, strings, structs, etc.
+
+trait Summary{
+    fn summarize (&self) -> String;
+}
+
+struct User{
+    name:String,
+    age:u32,
+}
+impl Summary for User{
+    fn summarize (&self) -> String {
+        return format!("the name is {} and the age is {}", self.name, self.age)
+    }
+}
+
+fn main(){
+    let user = User{
+        name: String::from("ayush"),
+        age:21,
+    };
+    println!("{}", user.summarize());
+}
+
+//trait bound syntax
+//single struct can implement multiple traits
+// pub fn notify<T: Summary>(item: T){
+//     println!("Breaking news {}", item.summarize());
+// }
