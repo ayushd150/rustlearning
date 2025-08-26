@@ -249,30 +249,62 @@
 
 // identity works with any type: integers, strings, structs, etc.
 
-trait Summary{
-    fn summarize (&self) -> String;
-}
+// trait Summary{
+//     fn summarize (&self) -> String;
+// }
 
-struct User{
-    name:String,
-    age:u32,
-}
-impl Summary for User{
-    fn summarize (&self) -> String {
-        return format!("the name is {} and the age is {}", self.name, self.age)
-    }
-}
+// struct User{
+//     name:String,
+//     age:u32,
+// }
+// impl Summary for User{
+//     fn summarize (&self) -> String {
+//         return format!("the name is {} and the age is {}", self.name, self.age)
+//     }
+// }
 
-fn main(){
-    let user = User{
-        name: String::from("ayush"),
-        age:21,
-    };
-    println!("{}", user.summarize());
-}
+// fn main(){
+//     let user = User{
+//         name: String::from("ayush"),
+//         age:21,
+//     };
+//     println!("{}", user.summarize());
+// }
 
 //trait bound syntax
 //single struct can implement multiple traits
 // pub fn notify<T: Summary>(item: T){
 //     println!("Breaking news {}", item.summarize());
 // }
+
+// use std::fmt::Display;
+// fn longest_with_an_announcement<'a, T>{
+//     x: &'a str,
+//     y: &'a str,
+//     ann:T ,
+// } -> &'a str
+// where
+//     T: Display,
+//     {
+//         println!("Announcement! {ann}");
+//         if x.len()>y.len(){
+//             x
+//         }
+//         else{
+//             y
+//         }
+//     }
+
+use std::thread
+
+fn main(){
+    thread::spawn(|| {
+        for i in 0..5{
+            println!("hi from spawned thread {}", i);
+        }
+    });
+    for i in 0..5{
+        println!("hi from main thread {}", i)
+    }
+    handle.join()
+}

@@ -70,3 +70,6 @@ Unlike garbage-collected languages (like Java/Python), Rust checks lifetimes at 
 
 generic ;ifetime annotation
 'a
+
+Multithreading
+Main thread runs after spawned thread finishes
