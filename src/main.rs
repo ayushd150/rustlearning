@@ -295,16 +295,43 @@
 //         }
 //     }
 
-use std::thread
+// use std::thread
 
+// fn main(){
+//     thread::spawn(|| {
+//         for i in 0..5{
+//             println!("hi from spawned thread {}", i);
+//         }
+//     });
+//     for i in 0..5{
+//         println!("hi from main thread {}", i)
+//     }
+//     handle.join()
+// }
+
+use std::thread;
 fn main(){
-    thread::spawn(|| {
-        for i in 0..5{
-            println!("hi from spawned thread {}", i);
-        }
-    });
-    for i in 0..5{
-        println!("hi from main thread {}", i)
+    let x=1;
+    {
+        let v = vec![1,2,3];
+        thread::spawn(||{
+            println!("{:?}", v);
+        });
     }
-    handle.join()
+    println!("{}", x);
+}
+
+//message passing
+
+use std::{
+    sync::mpsc,
+    thread::{self,spawn},
+};
+fn main(){
+    let (tx, rx) = mpsc::channel();
+    spawn(move || {
+        tx.send(String::from("hello world")).unwrap()
+    });
+    let value = rx.recv().unwrap();
+    println!(("{}", value))
 }
